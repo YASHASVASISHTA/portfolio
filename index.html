@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Portfolio Websites | LogicLink Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== Main Styles ===== */
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --secondary: #f59e0b;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #94a3b8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: #f1f5f9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* ===== Header ===== */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 60px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: #f1f5f9;
+            transform: skewY(-3deg);
+            z-index: 1;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            color: white;
+        }
+        
+        .company-name {
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            display: block;
+            opacity: 0.9;
+        }
+        
+        .tagline {
+            font-size: 1.25rem;
+            color: white;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+        }
+        
+        .price-badge {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        /* ===== Main Content ===== */
+        main {
+            position: relative;
+            z-index: 3;
+            margin-top: -30px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            color: #334155;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .benefit-icon {
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            flex-shrink: 0;
+        }
+        
+        .benefit-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        
+        .benefit-content p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+        
+        /* ===== CTA Section ===== */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .cta-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section p {
+            color: white;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* ===== Floating Widget ===== */
+        .floating-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 300px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            z-index: 100;
+            transform: scale(0.95);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .floating-widget:hover {
+            transform: scale(1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .widget-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 15px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .widget-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: white;
+            cursor: pointer;
+            opacity: 0.8;
+        }
+        
+        .widget-header h3 {
+            font-size: 1.1rem;
+            margin: 0;
+            color: white;
+        }
+        
+        .widget-body {
+            padding: 20px;
+        }
+        
+        .widget-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-align: center;
+            margin: 10px 0;
+        }
+        
+        .widget-btn {
+            display: block;
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .widget-btn:hover {
+            background: var(--primary-dark);
+        }
+        
+        .guarantee-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 15px;
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+        
+        .guarantee-badge i {
+            color: var(--secondary);
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Header -->
+    <header>
+        <div class="header-content">
+            <span class="company-name">LogicLink Solutions</span>
+            <h1>Professional Portfolio Websites</h1>
+            <p class="tagline">Showcase your work with a clean, responsive portfolio that makes the right impression</p>
+            <div class="price-badge">
+                $75 <small style="font-size: 0.8rem;">one-time</small>
+            </div>
+            <a href="#order-now" class="btn">Get Started Today</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <div class="card">
+                <h2>Why You Need a Professional Portfolio</h2>
+                <p>Your portfolio is your digital business card. In today's competitive market, a professional online presence helps you:</p>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h4>Stand Out</h4>
+                            <p>Differentiate yourself from competitors using generic templates or social media profiles.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h4>Build Trust</h4>
+                            <p>Clients perceive professionals with custom websites as more credible and established.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h4>Win More Work</h4>
+                            <p>A polished presentation helps you command higher rates and better projects.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>What You'll Get</h2>
+                <p>Our streamlined portfolio package includes everything you need to showcase your work effectively:</p>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h4>Responsive Design</h4>
+                            <p>Looks perfect on all devices from desktop to smartphone.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h4>Fast Performance</h4>
+                            <p>Optimized for quick loading times and smooth browsing.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h4>Contact System</h4>
+                            <p>Easy-to-use contact form so clients can reach you directly.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-life-ring"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h4>10-Day Support</h4>
+                            <p>We'll help with any questions or minor adjustments for 10 days after delivery.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Simple 3-Step Process</h2>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <span>1</span>
+                        </div>
+                        <div class="benefit-content">
+                            <h4>Place Your Order</h4>
+                            <p>Complete your secure payment and share basic details about your needs.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <span>2</span>
+                        </div>
+                        <div class="benefit-content">
+                            <h4>Send Your Content</h4>
+                            <p>Provide your images, text, and any specific requirements.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <span>3</span>
+                        </div>
+                        <div class="benefit-content">
+                            <h4>Review & Launch</h4>
+                            <p>We'll deliver your portfolio within 3 business days for your approval.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <div class="cta-container">
+                <h2>Ready to Upgrade Your Online Presence?</h2>
+                <p>Get your professional portfolio website from LogicLink Solutions today.</p>
+                <a href="#order-now" class="btn">Get My Portfolio Now</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Floating Widget -->
+    <div class="floating-widget">
+        <div class="widget-header">
+            <span class="widget-close">×</span>
+            <h3>Limited Availability</h3>
+        </div>
+        <div class="widget-body">
+            <p style="text-align: center; margin-bottom: 15px;">Professional Portfolio Website</p>
+            <div class="widget-price">
+                $75
+            </div>
+            <button class="widget-btn">
+                <i class="fas fa-shopping-cart"></i> Order Now
+            </button>
+            <div class="guarantee-badge">
+                <i class="fas fa-shield-alt"></i> 10-Day Support Included
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Make widget draggable
+        const widget = document.querySelector('.floating-widget');
+        let isDragging = false;
+        let offsetX, offsetY;
+
+        widget.addEventListener('mousedown', (e) => {
+            if (e.target === widget || e.target.closest('.widget-header')) {
+                isDragging = true;
+                offsetX = e.clientX - widget.getBoundingClientRect().left;
+                offsetY = e.clientY - widget.getBoundingClientRect().top;
+                widget.style.cursor = 'grabbing';
+            }
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                widget.style.left = (e.clientX - offsetX) + 'px';
+                widget.style.top = (e.clientY - offsetY) + 'px';
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+            widget.style.cursor = 'default';
+        });
+
+        // Close widget
+        document.querySelector('.widget-close').addEventListener('click', () => {
+            widget.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
