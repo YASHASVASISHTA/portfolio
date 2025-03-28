@@ -6,7 +6,7 @@
     <title>Professional Portfolio Websites | LogicLink Solutions</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* ===== Main Styles ===== */
+        /* Combined styles for both sections */
         :root {
             --primary: #3b82f6;
             --primary-dark: #2563eb;
@@ -35,7 +35,7 @@
             padding: 0 20px;
         }
         
-        /* ===== Header ===== */
+        /* Header Styles */
         header {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
@@ -102,7 +102,27 @@
             margin-bottom: 2rem;
         }
         
-        /* ===== Main Content ===== */
+        .btn {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Main Content Styles */
         main {
             position: relative;
             z-index: 3;
@@ -122,16 +142,6 @@
             font-weight: 700;
             margin-bottom: 1.5rem;
             color: var(--primary-dark);
-        }
-        
-        h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        p {
-            margin-bottom: 1.5rem;
-            color: #334155;
         }
         
         .benefits-grid {
@@ -169,7 +179,7 @@
             opacity: 0.9;
         }
         
-        /* ===== CTA Section ===== */
+        /* CTA Section Styles */
         .cta-section {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
@@ -195,115 +205,129 @@
             opacity: 0.95;
         }
         
-        .btn {
-            display: inline-block;
-            background: white;
-            color: var(--primary);
-            padding: 15px 40px;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        /* Form Styles */
+        .form-section {
+            background-color: #f1f5f9;
+            padding: 60px 0;
+            display: none; /* Initially hidden */
         }
         
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* ===== Floating Widget ===== */
-        .floating-widget {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 300px;
+        .form-card {
             background: white;
             border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-            z-index: 100;
-            transform: scale(0.95);
-            transition: all 0.3s ease;
-            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
         }
         
-        .floating-widget:hover {
-            transform: scale(1);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-        
-        .widget-header {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            padding: 15px;
-            text-align: center;
-            position: relative;
-        }
-        
-        .widget-close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            color: white;
-            cursor: pointer;
-            opacity: 0.8;
-        }
-        
-        .widget-header h3 {
-            font-size: 1.1rem;
-            margin: 0;
-            color: white;
-        }
-        
-        .widget-body {
-            padding: 20px;
-        }
-        
-        .widget-price {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-align: center;
-            margin: 10px 0;
-        }
-        
-        .widget-btn {
-            display: block;
-            width: 100%;
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-align: center;
-        }
-        
-        .widget-btn:hover {
-            background: var(--primary-dark);
-        }
-        
-        .guarantee-badge {
+        .section-header {
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin-top: 15px;
-            font-size: 0.8rem;
-            color: var(--gray);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
         }
         
-        .guarantee-badge i {
-            color: var(--secondary);
-            margin-right: 5px;
+        .section-header h3 {
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            margin-left: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--gray);
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        
+        .project-section {
+            background-color: #f8fafc;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .add-project-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .add-project-btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        /* Payment Section */
+        .payment-section {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f8fafc;
+            border-radius: 8px;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .container, .form-card {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .tagline {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Main Header -->
-    <header>
+    <header id="main-header">
         <div class="header-content">
             <span class="company-name">LogicLink Solutions</span>
             <h1>Professional Portfolio Websites</h1>
@@ -311,12 +335,12 @@
             <div class="price-badge">
                 $75 <small style="font-size: 0.8rem;">one-time</small>
             </div>
-            <a href="#order-now" class="btn">Get Started Today</a>
+            <button onclick="showForm()" class="btn">Get Started Today</button>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main>
+    <main id="main-content">
         <div class="container">
             <div class="card">
                 <h2>Why You Need a Professional Portfolio</h2>
@@ -437,62 +461,225 @@
             <div class="cta-container">
                 <h2>Ready to Upgrade Your Online Presence?</h2>
                 <p>Get your professional portfolio website from LogicLink Solutions today.</p>
-                <a href="#order-now" class="btn">Get My Portfolio Now</a>
+                <button onclick="showForm()" class="btn">Get My Portfolio Now</button>
             </div>
         </div>
     </main>
 
-    <!-- Floating Widget -->
-    <div class="floating-widget">
-        <div class="widget-header">
-            <span class="widget-close">×</span>
-            <h3>Limited Availability</h3>
-        </div>
-        <div class="widget-body">
-            <p style="text-align: center; margin-bottom: 15px;">Professional Portfolio Website</p>
-            <div class="widget-price">
-                $75
+    <!-- Order Form Section (Initially Hidden) -->
+    <section id="order-form" class="form-section">
+        <div class="container">
+            <div class="form-card">
+                <div class="section-header">
+                    <i class="fas fa-file-alt" style="color: var(--primary);"></i>
+                    <h3>Create Your Professional Portfolio</h3>
+                </div>
+
+                <form id="portfolioForm">
+                    <!-- Personal Information Section -->
+                    <div class="section-header">
+                        <i class="fas fa-user" style="color: var(--primary);"></i>
+                        <h3>Personal Information</h3>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" required placeholder="Enter your full name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="profession">Professional Title</label>
+                        <input type="text" id="profession" name="profession" required placeholder="e.g., Web Developer, Graphic Designer">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Professional Email</label>
+                        <input type="email" id="email" name="email" required placeholder="Enter your professional email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number (Optional)</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your contact number">
+                    </div>
+
+                    <!-- Education Section -->
+                    <div class="section-header">
+                        <i class="fas fa-graduation-cap" style="color: var(--primary);"></i>
+                        <h3>Education</h3>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="degree">Degree</label>
+                        <input type="text" id="degree" name="degree" required placeholder="e.g., Bachelor of Science in Computer Science">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="university">University/College</label>
+                        <input type="text" id="university" name="university" required placeholder="Name of your institution">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="graduationYear">Graduation Year</label>
+                        <input type="number" id="graduationYear" name="graduationYear" required placeholder="Year of graduation">
+                    </div>
+
+                    <!-- Social and Professional Links -->
+                    <div class="section-header">
+                        <i class="fas fa-link" style="color: var(--primary);"></i>
+                        <h3>Professional Links</h3>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="linkedinUrl">LinkedIn Profile URL</label>
+                        <input type="url" id="linkedinUrl" name="linkedinUrl" placeholder="https://www.linkedin.com/in/yourprofile">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="githubUrl">GitHub Profile URL</label>
+                        <input type="url" id="githubUrl" name="githubUrl" placeholder="https://github.com/yourusername">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="portfolioDescription">Professional Summary</label>
+                        <textarea id="portfolioDescription" name="portfolioDescription" rows="4" required placeholder="Write a brief professional summary about yourself"></textarea>
+                    </div>
+
+                    <!-- Profile and Logo Section -->
+                    <div class="section-header">
+                        <i class="fas fa-image" style="color: var(--primary);"></i>
+                        <h3>Profile &amp; Branding</h3>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="profilePicture">Profile Picture</label>
+                        <input type="file" id="profilePicture" name="profilePicture" accept="image/*">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="personalLogo">Personal Logo (Optional)</label>
+                        <input type="file" id="personalLogo" name="personalLogo" accept="image/*">
+                    </div>
+
+                    <!-- Projects Section -->
+                    <div class="section-header">
+                        <i class="fas fa-project-diagram" style="color: var(--primary);"></i>
+                        <h3>Projects</h3>
+                    </div>
+
+                    <div id="projectsContainer">
+                        <div class="project-section">
+                            <div class="form-group">
+                                <label>Project 1</label>
+                                <input type="text" name="project1Name" placeholder="Project Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Project Description</label>
+                                <textarea name="project1Description" rows="3" placeholder="Describe your project" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Technologies Used</label>
+                                <input type="text" name="project1Technologies" placeholder="e.g., React, Node.js, Python" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Project URL (Optional)</label>
+                                <input type="url" name="project1Url" placeholder="https://github.com/yourusername/project1">
+                            </div>
+                            <div class="form-group">
+                                <label>Project Images</label>
+                                <input type="file" name="project1Images" accept="image/*" multiple>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="button" id="addProjectBtn" class="add-project-btn">
+                        <i class="fas fa-plus"></i> Add Another Project
+                    </button>
+
+                    <!-- Payment Section -->
+                    <div class="payment-section">
+                        <div class="section-header">
+                            <i class="fas fa-credit-card" style="color: var(--primary);"></i>
+                            <h3>Payment Information</h3>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Total Amount</label>
+                            <input type="text" value="$75.00" readonly>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="cardNumber">Credit Card Number</label>
+                            <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="expiryDate">Expiration Date</label>
+                            <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="cvv">CVV</label>
+                            <input type="text" id="cvv" name="cvv" placeholder="123" required>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="submit-btn">Pay $75 & Create My Portfolio</button>
+                </form>
             </div>
-            <button class="widget-btn">
-                <i class="fas fa-shopping-cart"></i> Order Now
-            </button>
-            <div class="guarantee-badge">
-                <i class="fas fa-shield-alt"></i> 10-Day Support Included
-            </div>
         </div>
-    </div>
+    </section>
 
     <script>
-        // Make widget draggable
-        const widget = document.querySelector('.floating-widget');
-        let isDragging = false;
-        let offsetX, offsetY;
+        // Show form and hide main content
+        function showForm() {
+            document.getElementById('main-header').style.display = 'none';
+            document.getElementById('main-content').style.display = 'none';
+            document.getElementById('order-form').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
 
-        widget.addEventListener('mousedown', (e) => {
-            if (e.target === widget || e.target.closest('.widget-header')) {
-                isDragging = true;
-                offsetX = e.clientX - widget.getBoundingClientRect().left;
-                offsetY = e.clientY - widget.getBoundingClientRect().top;
-                widget.style.cursor = 'grabbing';
-            }
+        // Add project functionality
+        document.getElementById('addProjectBtn').addEventListener('click', function() {
+            const projectsContainer = document.getElementById('projectsContainer');
+            const projectCount = projectsContainer.children.length + 1;
+            
+            const newProject = document.createElement('div');
+            newProject.className = 'project-section';
+            newProject.innerHTML = `
+                <div class="form-group">
+                    <label>Project ${projectCount}</label>
+                    <input type="text" name="project${projectCount}Name" placeholder="Project Name" required>
+                </div>
+                <div class="form-group">
+                    <label>Project Description</label>
+                    <textarea name="project${projectCount}Description" rows="3" placeholder="Describe your project" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Technologies Used</label>
+                    <input type="text" name="project${projectCount}Technologies" placeholder="e.g., React, Node.js, Python" required>
+                </div>
+                <div class="form-group">
+                    <label>Project URL (Optional)</label>
+                    <input type="url" name="project${projectCount}Url" placeholder="https://github.com/yourusername/project1">
+                </div>
+                <div class="form-group">
+                    <label>Project Images</label>
+                    <input type="file" name="project${projectCount}Images" accept="image/*" multiple>
+                </div>
+            `;
+            
+            projectsContainer.appendChild(newProject);
         });
 
-        document.addEventListener('mousemove', (e) => {
-            if (isDragging) {
-                widget.style.left = (e.clientX - offsetX) + 'px';
-                widget.style.top = (e.clientY - offsetY) + 'px';
-            }
+        // Form submission
+        document.getElementById('portfolioForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your order! We will process your portfolio request.');
+            // In a real implementation, you would send the form data to a server here
         });
 
-        document.addEventListener('mouseup', () => {
-            isDragging = false;
-            widget.style.cursor = 'default';
-        });
-
-        // Close widget
-        document.querySelector('.widget-close').addEventListener('click', () => {
-            widget.style.display = 'none';
-        });
+        // Smooth scrolling for navigation links (not needed in this version)
     </script>
 </body>
 </html>
