@@ -304,28 +304,6 @@
             border-radius: 8px;
         }
         
-        /* UPI Payment Button */
-        .upi-payment-btn {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            background-color: #5a4bda;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            margin-top: 20px;
-            text-align: center;
-            text-decoration: none;
-        }
-        
-        .upi-payment-btn:hover {
-            background-color: #4a3bc9;
-        }
-        
         /* Responsive Adjustments */
         @media (max-width: 768px) {
             .container, .form-card {
@@ -629,33 +607,29 @@
                             <input type="text" value="$75.00" readonly>
                         </div>
                         
-                        <p style="text-align: center; margin: 20px 0; font-weight: 600;">Choose your payment method:</p>
-                        
                         <div class="form-group">
                             <label for="cardNumber">Credit Card Number</label>
-                            <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456">
+                            <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="expiryDate">Expiration Date</label>
-                            <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY">
+                            <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="cvv">CVV</label>
-                            <input type="text" id="cvv" name="cvv" placeholder="123">
+                            <input type="text" id="cvv" name="cvv" placeholder="123" required>
                         </div>
-                        
-                        <p style="text-align: center; margin: 20px 0; font-weight: 600;">OR</p>
-                        
-                        <!-- UPI Payment Button -->
-                        <a href="upi://pay?pa=yourbusiness@upi&pn=LogicLink%20Solutions&am=75.00&cu=USD" class="upi-payment-btn">
-                            <i class="fas fa-mobile-alt"></i> Pay with UPI
-                        </a>
                     </div>
 
                     <!-- Submit Button -->
-                    <button type="submit" class="submit-btn">Create My Portfolio</button>
+                  <button 
+    type="submit" 
+    href="upi://pay?pa=logiclinksolutions@upi&pn=LogicLink%20Solutions&am=75&cu=USD&tn=Portfolio%20Website%20Service" 
+    class="submit-btn">
+    Pay $75 & Create My Portfolio
+</button>
                 </form>
             </div>
         </div>
@@ -710,30 +684,7 @@
             // In a real implementation, you would send the form data to a server here
         });
 
-        // UPI Payment Handler
-        document.querySelector('.upi-payment-btn').addEventListener('click', function(e) {
-            e.preventDefault();
-            const form = document.getElementById('portfolioForm');
-            const fullName = document.getElementById('fullName').value;
-            const email = document.getElementById('email').value;
-            
-            if (!fullName || !email) {
-                alert('Please fill in your name and email before proceeding to payment.');
-                return;
-            }
-            
-            // In a real implementation, you would:
-            // 1. Validate all required form fields
-            // 2. Generate a unique transaction ID
-            // 3. Save the form data temporarily
-            // 4. Then redirect to UPI payment
-            
-            // For demo purposes, we'll just show an alert
-            alert('Redirecting to UPI payment... In a real implementation, this would open your UPI app with the payment details.');
-            
-            // In production, you would uncomment this:
-            // window.location.href = this.href;
-        });
+        // Smooth scrolling for navigation links (not needed in this version)
     </script>
 </body>
 </html>
