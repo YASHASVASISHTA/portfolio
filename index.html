@@ -6,7 +6,6 @@
     <title>Professional Portfolio Websites | LogicLink Solutions</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Combined styles for both sections */
         :root {
             --primary: #3b82f6;
             --primary-dark: #2563eb;
@@ -27,6 +26,7 @@
             color: var(--dark);
             line-height: 1.6;
             background-color: #f1f5f9;
+            padding-bottom: 80px; /* Space for floating button */
         }
         
         .container {
@@ -39,29 +39,9 @@
         header {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
-            padding: 60px 0 80px;
+            padding: 60px 0;
             text-align: center;
             position: relative;
-            overflow: hidden;
-        }
-        
-        header::after {
-            content: '';
-            position: absolute;
-            bottom: -50px;
-            left: 0;
-            right: 0;
-            height: 100px;
-            background: #f1f5f9;
-            transform: skewY(-3deg);
-            z-index: 1;
-        }
-        
-        .header-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
         }
         
         h1 {
@@ -90,64 +70,51 @@
             opacity: 0.95;
         }
         
-        .price-badge {
-            display: inline-block;
+        /* 3-Step Process Section */
+        .process-section {
             background: white;
-            color: var(--primary);
-            padding: 8px 24px;
-            border-radius: 50px;
-            font-weight: 700;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .process-steps {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 40px 0;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            padding: 0 15px;
+            margin-bottom: 30px;
+        }
+        
+        .step-number {
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 1.5rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
         }
         
-        .btn {
-            display: inline-block;
-            background: white;
-            color: var(--primary);
-            padding: 15px 40px;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            border: none;
-        }
-        
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* UPI Payment Button */
-        .upi-btn {
-            display: inline-block;
-            background: white;
-            color: var(--primary);
-            padding: 15px 40px;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        
-        .upi-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        .step h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary-dark);
         }
         
         /* Main Content Styles */
-        main {
-            position: relative;
-            z-index: 3;
-            margin-top: -30px;
+        .content-section {
+            padding: 60px 0;
         }
         
         .card {
@@ -200,47 +167,137 @@
             opacity: 0.9;
         }
         
-        /* CTA Section Styles */
-        .cta-section {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            padding: 60px 0;
-            text-align: center;
-            margin-top: 60px;
+        /* Floating Button */
+        .floating-btn-container {
+            position: fixed;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            z-index: 100;
         }
         
-        .cta-container {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .cta-section h2 {
+        .floating-btn {
+            background: var(--primary);
             color: white;
-            margin-bottom: 1rem;
-        }
-        
-        .cta-section p {
-            color: white;
-            margin-bottom: 2rem;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
             font-size: 1.1rem;
-            opacity: 0.95;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .floating-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+        
+        .floating-btn i {
+            margin-right: 10px;
+        }
+        
+        /* Form Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 200;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            padding: 30px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: inherit;
+        }
+        
+        .submit-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+        }
+        
+        .submit-btn:hover {
+            background: var(--primary-dark);
         }
         
         /* Responsive Adjustments */
         @media (max-width: 768px) {
             .container {
-                padding: 10px;
+                padding: 0 15px;
             }
             
             h1 {
                 font-size: 2.2rem;
             }
             
-            .tagline {
-                font-size: 1rem;
+            .process-steps {
+                flex-direction: column;
+                align-items: center;
             }
             
-            .btn, .upi-btn {
+            .step {
+                max-width: 100%;
+            }
+            
+            .card {
+                padding: 25px;
+            }
+            
+            .floating-btn {
                 padding: 12px 30px;
                 font-size: 1rem;
             }
@@ -250,20 +307,42 @@
 <body>
     <!-- Main Header -->
     <header id="main-header">
-        <div class="header-content">
+        <div class="container">
             <span class="company-name">LogicLink Solutions</span>
             <h1>Professional Portfolio Websites</h1>
             <p class="tagline">Showcase your work with a clean, responsive portfolio that makes the right impression</p>
-              
-            <a href="upi://pay?pa=logiclinksolutions@upi&pn=LogicLink%20Solutions&am=750&cu=INR&tn=Portfolio%20Website%20Service" 
-               class="btn" id="upiPaymentBtn">
-                Get Started Today
-            </a>
         </div>
     </header>
 
+    <!-- 3-Step Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <h2>Get Your Website in Just 3 Simple Steps</h2>
+            
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Provide Your Information</h3>
+                    <p>Fill out our simple form with your details and requirements</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Complete Payment</h3>
+                    <p>Secure payment via UPI or other methods</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Get Your Website</h3>
+                    <p>Receive your professional portfolio within 48 hours</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Main Content -->
-    <main id="main-content">
+    <section class="content-section">
         <div class="container">
             <div class="card">
                 <h2>Why You Need a Professional Portfolio</h2>
@@ -343,77 +422,90 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="card">
-                <h2>Simple 3-Step Process</h2>
-                
-                <div class="benefits-grid">
-                    <div class="benefit-item">
-                        <div class="benefit-icon">
-                            <span>1</span>
-                        </div>
-                        <div class="benefit-content">
-                            <h4>Place Your Order</h4>
-                            <p>Complete your secure payment and share basic details about your needs.</p>
-                        </div>
-                    </div>
-                    <div class="benefit-item">
-                        <div class="benefit-icon">
-                            <span>2</span>
-                        </div>
-                        <div class="benefit-content">
-                            <h4>Send Your Content</h4>
-                            <p>Provide your images, text, and any specific requirements.</p>
-                        </div>
-                    </div>
-                    <div class="benefit-item">
-                        <div class="benefit-icon">
-                            <span>3</span>
-                        </div>
-                        <div class="benefit-content">
-                            <h4>Review & Launch</h4>
-                            <p>We'll deliver your portfolio within 3 business days for your approval.</p>
-                        </div>
-                    </div>
+    <!-- Floating Button -->
+    <div class="floating-btn-container">
+        <button class="floating-btn" id="getStartedBtn">
+            <i class="fas fa-rocket"></i> Get Started
+        </button>
+    </div>
+
+    <!-- Form Modal -->
+    <div class="modal" id="formModal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModal">&times;</span>
+            <h2>Get Started</h2>
+            <p>Fill out this form and we'll create your professional portfolio website within 48 hours.</p>
+            
+            <form id="portfolioForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
                 </div>
-            </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="profession">Your Profession</label>
+                    <input type="text" id="profession" name="profession" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="requirements">Special Requirements</label>
+                    <textarea id="requirements" name="requirements" rows="4"></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Proceed to Payment</button>
+            </form>
         </div>
-
-        <!-- CTA Section -->
-        <div class="cta-section">
-            <div class="cta-container">
-                <h2>Ready to Upgrade Your Online Presence?</h2>
-                <p>Get your professional portfolio website from LogicLink Solutions today.</p>
-                <a href="upi://pay?pa=7569672112@pthdfc&pn=LogicLink%20Solutions&am=750&cu=INR&tn=Portfolio%20Website%20Service";>
-                    <i class="fas fa-wallet"></i> Pay ₹750 via UPI
-                </a>
-            </div>
-        </div>
-    </main>
+    </div>
 
     <script>
-        // Handle UPI payment click with fallback
-        document.getElementById('upiPaymentBtn').addEventListener('click', function(e) {
-            // Try to open UPI app directly
-            window.location.href = "upi://pay?pa=7569672112@pthdfc&pn=LogicLink%20Solutions&am=750&cu=INR&tn=Portfolio%20Website%20Service";
-            
-            // Fallback in case UPI link doesn't work
-            setTimeout(function() {
-                if(!document.hidden) {
-                    alert("If UPI payment didn't open automatically, please use the following details:\n\nUPI ID: 7569672112@pthdfc\nAmount: ₹750");
-                }
-            }, 500);
+        // Handle modal open/close
+        const modal = document.getElementById('formModal');
+        const getStartedBtn = document.getElementById('getStartedBtn');
+        const closeModal = document.getElementById('closeModal');
+        
+        getStartedBtn.addEventListener('click', function() {
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
         });
-
-        // Handle CTA UPI button click
-        document.querySelector('.upi-btn').addEventListener('click', function(e) {
-            // Try to open UPI app directly
+        
+        closeModal.addEventListener('click', function() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Enable scrolling
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Form submission
+        document.getElementById('portfolioForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Here you would typically send the form data to your server
+            // For this example, we'll redirect to payment
             window.location.href = "upi://pay?pa=7569672112@pthdfc&pn=LogicLink%20Solutions&am=750&cu=INR&tn=Portfolio%20Website%20Service";
             
             // Fallback in case UPI link doesn't work
             setTimeout(function() {
                 if(!document.hidden) {
-                    alert("If UPI payment didn't open automatically, please use the following details:\n\n UPI ID:7569672112@pthdfc \nAmount: ₹750");
+                    alert("If payment didn't open automatically, please use the following details:\n\nUPI ID: 7569672112@pthdfc\nAmount: ₹750");
                 }
             }, 500);
         });
