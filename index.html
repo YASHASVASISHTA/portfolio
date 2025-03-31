@@ -254,9 +254,10 @@
             <span class="company-name">LogicLink Solutions</span>
             <h1>Professional Portfolio Websites</h1>
             <p class="tagline">Showcase your work with a clean, responsive portfolio that makes the right impression</p>
-            <div class="price-badge">
-                ₹750 <small style="font-size: 0.8rem;">one-time</small>
-            </div>
+              <a href="upi://pay?pa=logiclinksolutions@upi&pn=LogicLink%20Solutions&am=750&cu=INR&tn=Portfolio%20Website%20Service" 
+               class="btn" id="upiPaymentBtn">
+                Pay 750
+            </a>
             <a href="upi://pay?pa=logiclinksolutions@upi&pn=LogicLink%20Solutions&am=750&cu=INR&tn=Portfolio%20Website%20Service" 
                class="btn" id="upiPaymentBtn">
                 Get Started Today
@@ -415,7 +416,7 @@
             // Fallback in case UPI link doesn't work
             setTimeout(function() {
                 if(!document.hidden) {
-                    alert("If UPI payment didn't open automatically, please use the following details:\n\nUPI ID:7569672112@pthdfc \nAmount: ₹750");
+                    alert("If UPI payment didn't open automatically, please use the following details:\n\n UPI ID:7569672112@pthdfc \nAmount: ₹750");
                 }
             }, 500);
         });
