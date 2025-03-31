@@ -26,7 +26,7 @@
             color: var(--dark);
             line-height: 1.6;
             background-color: #f1f5f9;
-            padding-bottom: 80px; /* Space for floating button */
+            padding-bottom: 80px;
         }
         
         .container {
@@ -68,6 +68,42 @@
             margin-left: auto;
             margin-right: auto;
             opacity: 0.95;
+        }
+        
+        .header-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
         
         /* 3-Step Process Section */
@@ -112,9 +148,98 @@
             color: var(--primary-dark);
         }
         
+        /* Portfolio Showcase Section */
+        .portfolio-section {
+            padding: 60px 0;
+            background: #f8fafc;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+        
+        .portfolio-categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .category-btn {
+            padding: 10px 20px;
+            background: white;
+            border: 1px solid var(--gray);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .category-btn.active, .category-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .portfolio-item {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .portfolio-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .portfolio-info {
+            padding: 20px;
+        }
+        
+        .portfolio-info h3 {
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+        }
+        
+        .portfolio-info p {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+        
+        .portfolio-tag {
+            display: inline-block;
+            background: #f0f7ff;
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
         /* Main Content Styles */
         .content-section {
             padding: 60px 0;
+            background: white;
         }
         
         .card {
@@ -274,6 +399,64 @@
             background: var(--primary-dark);
         }
         
+        /* Payment Modal */
+        .payment-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 200;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .payment-content {
+            background: white;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            padding: 30px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .payment-info {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .payment-info p {
+            margin-bottom: 10px;
+        }
+        
+        .payment-btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            border: none;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .payment-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
         /* Responsive Adjustments */
         @media (max-width: 768px) {
             .container {
@@ -284,6 +467,16 @@
                 font-size: 2.2rem;
             }
             
+            .header-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
             .process-steps {
                 flex-direction: column;
                 align-items: center;
@@ -291,6 +484,10 @@
             
             .step {
                 max-width: 100%;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
             }
             
             .card {
@@ -311,6 +508,15 @@
             <span class="company-name">LogicLink Solutions</span>
             <h1>Professional Portfolio Websites</h1>
             <p class="tagline">Showcase your work with a clean, responsive portfolio that makes the right impression</p>
+            
+            <div class="header-buttons">
+                <a href="#get-started" class="btn btn-primary" id="headerGetStartedBtn">
+                    <i class="fas fa-rocket"></i> Get Started Today
+                </a>
+                <a href="#portfolio-showcase" class="btn btn-secondary">
+                    <i class="fas fa-eye"></i> See Our Portfolio Examples
+                </a>
+            </div>
         </div>
     </header>
 
@@ -336,6 +542,107 @@
                     <div class="step-number">3</div>
                     <h3>Get Your Website</h3>
                     <p>Receive your professional portfolio within 48 hours</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Showcase Section -->
+    <section class="portfolio-section" id="portfolio-showcase">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Portfolio Showcase</h2>
+                <p>See examples of portfolios we've created for different professionals</p>
+            </div>
+            
+            <div class="portfolio-categories">
+                <button class="category-btn active" data-category="all">All</button>
+                <button class="category-btn" data-category="freelancers">Freelancers</button>
+                <button class="category-btn" data-category="graduates">Graduates</button>
+                <button class="category-btn" data-category="engineers">Engineers</button>
+                <button class="category-btn" data-category="designers">Designers</button>
+                <button class="category-btn" data-category="others">Others</button>
+            </div>
+            
+            <div class="portfolio-grid">
+                <!-- Freelancer Portfolio 1 -->
+                <div class="portfolio-item" data-category="freelancers">
+                    <div class="portfolio-image" style="background-image: url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');"></div>
+                    <div class="portfolio-info">
+                        <h3>Freelance Writer Portfolio</h3>
+                        <p>Clean, content-focused design for a freelance journalist</p>
+                        <span class="portfolio-tag">Freelancer</span>
+                    </div>
+                </div>
+                
+                <!-- Graduate Portfolio 1 -->
+                <div class="portfolio-item" data-category="graduates">
+                    <div class="portfolio-image" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');"></div>
+                    <div class="portfolio-info">
+                        <h3>Recent Graduate Portfolio</h3>
+                        <p>Showcasing academic projects and internship experiences</p>
+                        <span class="portfolio-tag">Graduate</span>
+                    </div>
+                </div>
+                
+                <!-- Engineer Portfolio -->
+                <div class="portfolio-item" data-category="engineers">
+                    <div class="portfolio-image" style="background-image: url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');"></div>
+                    <div class="portfolio-info">
+                        <h3>Software Engineer Portfolio</h3>
+                        <p>Technical portfolio highlighting coding projects and skills</p>
+                        <span class="portfolio-tag">Engineer</span>
+                    </div>
+                </div>
+                
+                <!-- Design Student Portfolio 1 -->
+                <div class="portfolio-item" data-category="designers">
+                    <div class="portfolio-image" style="background-image: url('https://images.unsplash.com/photo-1541462608143-67571c6738dd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');"></div>
+                    <div class="portfolio-info">
+                        <h3>Design Student Portfolio</h3>
+                        <p>Visual portfolio highlighting graphic design projects</p>
+                        <span class="portfolio-tag">Designer</span>
+                    </div>
+                </div>
+                
+                <!-- Freelancer Portfolio 2 -->
+                <div class="portfolio-item" data-category="freelancers">
+                    <div class="portfolio-image" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');"></div>
+                    <div class="portfolio-info">
+                        <h3>Photographer Portfolio</h3>
+                        <p>Gallery-style portfolio for a freelance photographer</p>
+                        <span class="portfolio-tag">Freelancer</span>
+                    </div>
+                </div>
+                
+                <!-- Graduate Portfolio 2 -->
+                <div class="portfolio-item" data-category="graduates">
+                    <div class="portfolio-image" style="background-image: url('https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');"></div>
+                    <div class="portfolio-info">
+                        <h3>Engineering Graduate</h3>
+                        <p>Technical portfolio showcasing engineering projects</p>
+                        <span class="portfolio-tag">Graduate</span>
+                    </div>
+                </div>
+                
+                <!-- Engineer Portfolio 2 -->
+                <div class="portfolio-item" data-category="engineers">
+                    <div class="portfolio-image" style="background-image: url('https://images.unsplash.com/photo-1629904853893-c2c8981a1dc5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');"></div>
+                    <div class="portfolio-info">
+                        <h3>Mechanical Engineer</h3>
+                        <p>Portfolio showcasing CAD designs and engineering projects</p>
+                        <span class="portfolio-tag">Engineer</span>
+                    </div>
+                </div>
+                
+                <!-- Others Portfolio -->
+                <div class="portfolio-item" data-category="others">
+                    <div class="portfolio-image" style="background-image: url('https://images.unsplash.com/photo-1573497620053-ea5300f94f21?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');"></div>
+                    <div class="portfolio-info">
+                        <h3>Business Consultant</h3>
+                        <p>Professional portfolio for an independent consultant</p>
+                        <span class="portfolio-tag">Professional</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -457,12 +764,32 @@
                 
                 <div class="form-group">
                     <label for="profession">Your Profession</label>
-                    <input type="text" id="profession" name="profession" required>
+                    <input type="text" id="profession" name="profession" placeholder="e.g., Graphic Designer, Software Engineer" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="degree">Graduating Degree (if applicable)</label>
+                    <input type="text" id="degree" name="degree" placeholder="e.g., B.Tech Computer Science, MBA Marketing">
+                </div>
+                
+                <div class="form-group">
+                    <label for="website-type">Type of Website Needed</label>
+                    <select id="website-type" name="website-type" required>
+                        <option value="">Select your type</option>
+                        <option value="freelancer">Freelancer Portfolio</option>
+                        <option value="graduate">Graduate/Student Portfolio</option>
+                        <option value="engineer">Engineering Portfolio</option>
+                        <option value="designer">Design Portfolio</option>
+                        <option value="photographer">Photography Portfolio</option>
+                        <option value="writer">Writer/Content Creator</option>
+                        <option value="business">Business Professional</option>
+                        <option value="other">Other (Specify in requirements)</option>
+                    </select>
                 </div>
                 
                 <div class="form-group">
                     <label for="requirements">Special Requirements</label>
-                    <textarea id="requirements" name="requirements" rows="4"></textarea>
+                    <textarea id="requirements" name="requirements" rows="4" placeholder="Any specific features or design preferences you'd like"></textarea>
                 </div>
                 
                 <button type="submit" class="submit-btn">Proceed to Payment</button>
@@ -470,42 +797,125 @@
         </div>
     </div>
 
+    <!-- Payment Modal -->
+    <div class="payment-modal" id="paymentModal">
+        <div class="payment-content">
+            <span class="close-btn" id="closePaymentModal">&times;</span>
+            <h2>Complete Your Purchase</h2>
+            
+            <div class="payment-info">
+                <p><strong>After payment, you'll receive:</strong></p>
+                <p>1. A detailed form sent to your email to collect all necessary information for your website</p>
+                <p>2. Instructions for submitting your content (images, text, etc.)</p>
+                <p>3. A timeline for when to expect your first draft</p>
+                <p><em>Take your time filling out the detailed form - it will directly reflect on your final website.</em></p>
+            </div>
+            
+            <p style="margin: 20px 0;">Please complete your payment of ₹750 to proceed:</p>
+            
+            <a href="upi://pay?pa=7569672112@pthdfc&pn=LogicLink%20Solutions&am=750&cu=INR&tn=Portfolio%20Website%20Service" 
+               class="payment-btn" id="upiPaymentBtn">
+                <i class="fas fa-wallet"></i> Pay via UPI
+            </a>
+            
+            <p style="margin-top: 15px; font-size: 0.9rem; color: var(--gray);">
+                If UPI payment doesn't open automatically, please use:<br>
+                UPI ID: 7569672112@pthdfc<br>
+                Amount: ₹750
+            </p>
+        </div>
+    </div>
+
     <script>
         // Handle modal open/close
         const modal = document.getElementById('formModal');
+        const paymentModal = document.getElementById('paymentModal');
         const getStartedBtn = document.getElementById('getStartedBtn');
+        const headerGetStartedBtn = document.getElementById('headerGetStartedBtn');
         const closeModal = document.getElementById('closeModal');
+        const closePaymentModal = document.getElementById('closePaymentModal');
+        const upiPaymentBtn = document.getElementById('upiPaymentBtn');
         
+        // Open form modal from floating button
         getStartedBtn.addEventListener('click', function() {
             modal.style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // Prevent scrolling
+            document.body.style.overflow = 'hidden';
         });
         
+        // Open form modal from header button
+        headerGetStartedBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+        
+        // Close form modal
         closeModal.addEventListener('click', function() {
             modal.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Enable scrolling
+            document.body.style.overflow = 'auto';
         });
         
-        // Close modal when clicking outside
+        // Close payment modal
+        closePaymentModal.addEventListener('click', function() {
+            paymentModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close modals when clicking outside
         window.addEventListener('click', function(e) {
             if (e.target === modal) {
                 modal.style.display = 'none';
                 document.body.style.overflow = 'auto';
             }
+            if (e.target === paymentModal) {
+                paymentModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Portfolio filtering
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Update active button
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Filter items
+                const category = this.dataset.category;
+                
+                portfolioItems.forEach(item => {
+                    if (category === 'all' || item.dataset.category === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
         });
         
         // Form submission
         document.getElementById('portfolioForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Here you would typically send the form data to your server
-            // For this example, we'll redirect to payment
+            // Close form modal
+            modal.style.display = 'none';
+            
+            // Open payment modal
+            paymentModal.style.display = 'flex';
+        });
+        
+        // Handle UPI payment click with fallback
+        upiPaymentBtn.addEventListener('click', function(e) {
+            // Try to open UPI app directly
             window.location.href = "upi://pay?pa=7569672112@pthdfc&pn=LogicLink%20Solutions&am=750&cu=INR&tn=Portfolio%20Website%20Service";
             
             // Fallback in case UPI link doesn't work
             setTimeout(function() {
                 if(!document.hidden) {
-                    alert("If payment didn't open automatically, please use the following details:\n\nUPI ID: 7569672112@pthdfc\nAmount: ₹750");
+                    alert("If UPI payment didn't open automatically, please use the following details:\n\nUPI ID: 7569672112@pthdfc\nAmount: ₹750");
                 }
             }, 500);
         });
