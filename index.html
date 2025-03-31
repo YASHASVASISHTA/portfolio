@@ -255,9 +255,9 @@
             <h1>Professional Portfolio Websites</h1>
             <p class="tagline">Showcase your work with a clean, responsive portfolio that makes the right impression</p>
             <div class="price-badge">
-                $75 <small style="font-size: 0.8rem;">one-time</small>
+                ₹750 <small style="font-size: 0.8rem;">one-time</small>
             </div>
-            <a href="upi://pay?pa=logiclinksolutions@upi&pn=LogicLink%20Solutions&am=75&cu=USD&tn=Portfolio%20Website%20Service" 
+            <a href="upi://pay?pa=logiclinksolutions@upi&pn=LogicLink%20Solutions&am=750&cu=INR&tn=Portfolio%20Website%20Service" 
                class="btn" id="upiPaymentBtn">
                 Get Started Today
             </a>
@@ -386,9 +386,9 @@
             <div class="cta-container">
                 <h2>Ready to Upgrade Your Online Presence?</h2>
                 <p>Get your professional portfolio website from LogicLink Solutions today.</p>
-                <a href="upi://pay?pa=logiclinksolutions@upi&pn=LogicLink%20Solutions&am=75&cu=USD&tn=Portfolio%20Website%20Service" 
+                <a href="upi://pay?pa=logiclinksolutions@upi&pn=LogicLink%20Solutions&am=750&cu=INR&tn=Portfolio%20Website%20Service" 
                    class="upi-btn">
-                    <i class="fas fa-wallet"></i> Pay ₹6,000 via UPI
+                    <i class="fas fa-wallet"></i> Pay ₹750 via UPI
                 </a>
             </div>
         </div>
@@ -398,12 +398,12 @@
         // Handle UPI payment click with fallback
         document.getElementById('upiPaymentBtn').addEventListener('click', function(e) {
             // Try to open UPI app directly
-            window.location.href = "upi://pay?pa=logiclinksolutions@upi&pn=LogicLink%20Solutions&am=75&cu=USD&tn=Portfolio%20Website%20Service";
+            window.location.href = "upi://pay?pa=logiclinksolutions@upi&pn=LogicLink%20Solutions&am=750&cu=INR&tn=Portfolio%20Website%20Service";
             
             // Fallback in case UPI link doesn't work
             setTimeout(function() {
                 if(!document.hidden) {
-                    alert("If UPI payment didn't open automatically, please use the following details:\n\nUPI ID: logiclinksolutions@upi\nAmount: ₹6,000 (approx $75)");
+                    alert("If UPI payment didn't open automatically, please use the following details:\n\nUPI ID: logiclinksolutions@upi\nAmount: ₹750");
                 }
             }, 500);
         });
@@ -411,12 +411,12 @@
         // Handle CTA UPI button click
         document.querySelector('.upi-btn').addEventListener('click', function(e) {
             // Try to open UPI app directly
-            window.location.href = "upi://pay?pa=logiclinksolutions@upi&pn=LogicLink%20Solutions&am=75&cu=USD&tn=Portfolio%20Website%20Service";
+            window.location.href = "upi://pay?pa=logiclinksolutions@upi&pn=LogicLink%20Solutions&am=750&cu=INR&tn=Portfolio%20Website%20Service";
             
             // Fallback in case UPI link doesn't work
             setTimeout(function() {
                 if(!document.hidden) {
-                    alert("If UPI payment didn't open automatically, please use the following details:\n\nUPI ID: logiclinksolutions@upi\nAmount: ₹6,000 (approx $75)");
+                    alert("If UPI payment didn't open automatically, please use the following details:\n\nUPI ID: logiclinksolutions@upi\nAmount: ₹750");
                 }
             }, 500);
         });
