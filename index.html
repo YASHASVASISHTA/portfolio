@@ -457,6 +457,40 @@
             transform: translateY(-2px);
         }
         
+        /* PayPal Button Styles */
+        .paypal-button-container {
+            width: 100%;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .paypal-button {
+            background: #FFD140;
+            color: #000000;
+            border: none;
+            border-radius: 0.25rem;
+            min-width: 11.625rem;
+            padding: 0 2rem;
+            height: 2.625rem;
+            font-weight: bold;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            font-size: 1rem;
+            line-height: 1.25rem;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        
+        .paypal-logo {
+            height: 0.875rem;
+            vertical-align: middle;
+            margin-left: 5px;
+        }
+        
+        .payment-methods {
+            margin-top: 10px;
+        }
+        
         /* Responsive Adjustments */
         @media (max-width: 768px) {
             .container {
@@ -535,7 +569,7 @@
                 <div class="step">
                     <div class="step-number">2</div>
                     <h3>Complete Payment</h3>
-                    <p>Secure payment via UPI or other methods</p>
+                    <p>Secure payment via PayPal or other methods</p>
                 </div>
                 
                 <div class="step">
@@ -812,18 +846,21 @@
                 <p><em>Take your time filling out the detailed form - it will directly reflect on your final website.</em></p>
             </div>
             
-            <p style="margin: 20px 0;">Please complete your payment of ₹750 to proceed:</p>
+            <p style="margin: 20px 0;">Please complete your payment of ₹750 (approximately $9) to proceed:</p>
             
-            <a href="upi://pay?pa=7569672112@pthdfc&pn=LogicLink%20Solutions&am=750&cu=INR&tn=Portfolio%20Website%20Service" 
-               class="payment-btn" id="upiPaymentBtn">
-                <i class="fas fa-wallet"></i> Pay via UPI
-            </a>
-            
-            <p style="margin-top: 15px; font-size: 0.9rem; color: var(--gray);">
-                If UPI payment doesn't open automatically, please use:<br>
-                UPI ID: 7569672112@pthdfc<br>
-                Amount: ₹750
-            </p>
+            <div class="paypal-button-container">
+                <form action="https://www.paypal.com/ncp/payment/RV2SEYYEQGD68" method="post" target="_blank">
+                    <button type="submit" class="paypal-button">
+                        Pay with PayPal
+                    </button>
+                </form>
+                <div class="payment-methods">
+                    <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="Accepted payment methods" width="200">
+                </div>
+                <p style="font-size: 0.8rem; margin-top: 10px;">
+                    Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="PayPal" class="paypal-logo">
+                </p>
+            </div>
         </div>
     </div>
 
@@ -835,7 +872,6 @@
         const headerGetStartedBtn = document.getElementById('headerGetStartedBtn');
         const closeModal = document.getElementById('closeModal');
         const closePaymentModal = document.getElementById('closePaymentModal');
-        const upiPaymentBtn = document.getElementById('upiPaymentBtn');
         
         // Open form modal from floating button
         getStartedBtn.addEventListener('click', function() {
@@ -906,19 +942,6 @@
             
             // Open payment modal
             paymentModal.style.display = 'flex';
-        });
-        
-        // Handle UPI payment click with fallback
-        upiPaymentBtn.addEventListener('click', function(e) {
-            // Try to open UPI app directly
-            window.location.href = "upi://pay?pa=7569672112@pthdfc&pn=LogicLink%20Solutions&am=750&cu=INR&tn=Portfolio%20Website%20Service";
-            
-            // Fallback in case UPI link doesn't work
-            setTimeout(function() {
-                if(!document.hidden) {
-                    alert("If UPI payment didn't open automatically, please use the following details:\n\nUPI ID: 7569672112@pthdfc\nAmount: ₹750");
-                }
-            }, 500);
         });
     </script>
 </body>
