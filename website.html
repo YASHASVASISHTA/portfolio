@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LogicLink Solutions | Professional Web Development</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #7c3aed;
+            --dark: #0f172a;
+            --darker: #020617;
+            --light: #f8fafc;
+            --gray: #94a3b8;
+            --accent: #06b6d4;
+            --success: #10b981;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background-color: var(--darker);
+            padding: 40px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .modal-left {
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            padding-right: 30px;
+        }
+        
+        .modal-right {
+            padding-left: 30px;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            grid-column: 1 / -1;
+        }
+        
+        .modal-header h3 {
+            font-size: 1.5rem;
+            color: var(--light);
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--gray);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .modal-steps {
+            margin-bottom: 30px;
+        }
+        
+        .modal-step {
+            display: flex;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+        
+        .step-number {
+            background-color: var(--primary);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+            font-size: 0.8rem;
+        }
+        
+        .step-content {
+            flex-grow: 1;
+        }
+        
+        .step-content h4 {
+            margin-bottom: 5px;
+            color: var(--light);
+        }
+        
+        .step-content p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .modal-form {
+            margin-top: 30px;
+        }
+        
+        .modal-form input,
+        .modal-form textarea,
+        .modal-form select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            color: var(--light);
+            font-size: 14px;
+        }
+        
+        /* Dark-themed select dropdown */
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2394a3b8'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 20px;
+            padding-right: 30px;
+        }
+        
+        select option {
+            background-color: var(--darker);
+            color: var(--light);
+        }
+        
+        .modal-payment {
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .modal-payment-button {
+            background-color: var(--success);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        
+        .modal-payment-button:hover {
+            background-color: #0ea371;
+        }
+        
+        .doubts-section {
+            background-color: rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .doubts-section h4 {
+            color: var(--light);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .doubts-section p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .email-link {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .email-link:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .email-link i {
+            margin-right: 8px;
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(2, 6, 23, 0.9);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo img {
+            height: 40px;
+        }
+        
+        .logo-text {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--light);
+            letter-spacing: -0.5px;
+        }
+        
+        .logo-text span {
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav ul li a {
+            color: var(--gray);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 15px;
+            letter-spacing: 0.2px;
+        }
+        
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: var(--light);
+        }
+        
+        .nav-button {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .nav-button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to bottom, var(--darker), var(--dark));
+            padding: 120px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            line-height: 1.2;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            color: var(--gray);
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--light);
+            padding: 14px 32px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 15px;
+        }
+        
+        .cta-button.secondary {
+            background-color: transparent;
+            border: 1px solid var(--gray);
+            color: var(--light);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cta-button.secondary:hover {
+            border-color: var(--light);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background-color: var(--darker);
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.3rem;
+            color: var(--light);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+        }
+        
+        .service-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: linear-gradient(145deg, #111827, #0f172a);
+            border-radius: 12px;
+            padding: 40px 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--light);
+        }
+        
+        .service-card .price {
+            font-size: 2.3rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--light);
+        }
+        
+        .service-card .price span {
+            font-size: 1rem;
+            color: var(--gray);
+            font-weight: normal;
+        }
+        
+        .service-card .duration {
+            color: var(--gray);
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+        
+        .service-card ul {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .service-card ul li {
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 28px;
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+        
+        .service-card ul li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--success);
+        }
+        
+        .service-card .card-button {
+            display: block;
+            text-align: center;
+            background-color: var(--primary);
+            color: var(--light);
+            padding: 12px 0;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 15px;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .service-card .card-button:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        /* Templates Section */
+        .templates {
+            padding: 100px 0;
+            background-color: var(--dark);
+        }
+        
+        .template-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .template-card {
+            background-color: var(--darker);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .template-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .template-img {
+            height: 200px;
+            background-color: #1e293b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .template-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .template-card:hover .template-img img {
+            transform: scale(1.05);
+        }
+        
+        .template-img::before {
+            content: 'Preview';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 2;
+        }
+        
+        .template-card:hover .template-img::before {
+            opacity: 1;
+        }
+        
+        .template-info {
+            padding: 20px;
+        }
+        
+        .template-info h3 {
+            margin-bottom: 10px;
+            color: var(--light);
+            font-size: 1.2rem;
+        }
+        
+        .template-info p {
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .template-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        
+        .template-button:hover {
+            color: var(--primary);
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background-color: var(--darker);
+            position: relative;
+        }
+        
+        .contact::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 60px;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--light);
+        }
+        
+        .contact-info p {
+            margin-bottom: 30px;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: var(--gray);
+        }
+        
+        .contact-item i {
+            margin-right: 15px;
+            color: var(--accent);
+            width: 20px;
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            color: var(--gray);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            color: var(--light);
+            transform: translateY(-3px);
+        }
+        
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 20px;
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--light);
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            outline: none;
+            border-color: var(--primary);
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .contact-form button {
+            background-color: var(--primary);
+            color: var(--light);
+            border: none;
+            padding: 14px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 15px;
+            width: 100%;
+        }
+        
+        .contact-form button:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #020617;
+            padding: 40px 0 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h4 {
+            color: var(--light);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-col ul li a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--light);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .footer-text {
+            color: var(--gray);
+            font-size: 0.85rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                grid-template-columns: 1fr;
+                padding: 30px 20px;
+            }
+            
+            .modal-left {
+                border-right: none;
+                padding-right: 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                padding-bottom: 30px;
+                margin-bottom: 30px;
+            }
+            
+            .modal-right {
+                padding-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Modal -->
+    <div class="modal" id="packageModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalPackageTitle">Get Your Website</h3>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            
+            <div class="modal-left">
+                <div class="modal-steps">
+                    <div class="modal-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Make Payment</h4>
+                            <p>Secure payment processed through trusted payment gateway.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Project Details</h4>
+                            <p>Tell us about your requirements and preferences in the form sent to your mail.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Initial Delivery</h4>
+                            <p>Receive your website draft within 48 hours for review and feedback.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Final Delivery</h4>
+                            <p>Get your polished, final website after incorporating your feedback.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-form">
+                    <input type="text" placeholder="Your Full Name" required>
+                    <input type="email" placeholder="Email Address" required>
+                    <input type="text" placeholder="Phone Number" required>
+                    <textarea placeholder="Tell us about your website requirements..." required></textarea>
+                    <select required>
+                        <option value="" disabled selected>Select Your Industry</option>
+                        <option value="student">Final Year Student</option>
+                        <option value="internship">Designer Portfolio</option>
+                        <option value="freelancer">Freelancer</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="modal-payment">
+                    <button class="modal-payment-button" id="modalPaymentButton">Pay $150</button>
+                </div>
+            </div>
+            
+            <div class="modal-right">
+                <div class="doubts-section">
+                    <h4>Have doubts about the process?</h4>
+                    <p>We're happy to answer any questions you might have about our services or the development process.</p>
+                    <p>Feel free to email us directly and we'll get back to you within 24 hours.</p>
+                    <a href="mailto:contact.logiclinksolutions@gmail.com" class="email-link">
+                        <i class="fas fa-envelope"></i> Email Us
+                    </a>
+                </div>
+                
+                <div style="margin-top: 30px;">
+                    <h4 style="color: var(--light); margin-bottom: 15px; font-size: 1.1rem;">What happens after payment?</h4>
+                    <ul style="list-style: none; color: var(--gray); font-size: 0.9rem; line-height: 1.7;">
+                        <li style="margin-bottom: 10px; position: relative; padding-left: 25px;">
+                            <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success);"></i>
+                            You'll receive a confirmation email with payment receipt
+                        </li>
+                        <li style="margin-bottom: 10px; position: relative; padding-left: 25px;">
+                            <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success);"></i>
+                            We'll send you a detailed questionnaire about your requirements
+                        </li>
+                        <li style="margin-bottom: 10px; position: relative; padding-left: 25px;">
+                            <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success);"></i>
+                            Our designer will contact you within 24 hours to discuss your project
+                        </li>
+                        <li style="margin-bottom: 10px; position: relative; padding-left: 25px;">
+                            <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success);"></i>
+                            You'll get regular updates throughout the development process
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="LOGICLINK.png" alt="LogicLink Solutions Logo">
+                <div class="logo-text">Logic<span>Link</span></div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#services" class="active">Services</a></li>
+                    <li><a href="#templates">Templates</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#services" class="nav-button">Get Started</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Professional Web Solutions for Your Career Growth</h1>
+            <p>We design high-quality websites for final year students, internship applicants, and freelancers to showcase their skills and stand out in competitive markets.</p>
+            <div class="cta-buttons">
+                <a href="#services" class="cta-button">View Packages</a>
+                <a href="#templates" class="cta-button secondary">Explore Templates</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Service Packages</h2>
+                <p>Tailored solutions designed to meet your specific needs and budget requirements</p>
+            </div>
+            <div class="service-cards">
+                <!-- 1 Year Package -->
+                <div class="service-card">
+                    <h3>Starter Package</h3>
+                    <div class="price">$150 <span>/ year</span></div>
+                    <div class="duration">Ideal for short-term projects</div>
+                    <ul>
+                        <li>1 Professional Design</li>
+                        <li>3 Comprehensive Revisions</li>
+                        <li>Fully Mobile Responsive</li>
+                        <li>Basic SEO Optimization</li>
+                        <li>Contact Form Integration</li>
+                        <li>Technical Email Support</li>
+                        <li>Hosting on Vercel</li>
+                    </ul>
+                    <button class="card-button" onclick="openModal('Starter Package', 150)">Get This Package</button>
+                </div>
+                
+                <!-- 3 Year Package -->
+                <div class="service-card">
+                    <h3>Professional Package</h3>
+                    <div class="price">$375 <span>/ 3 years</span></div>
+                    <div class="duration">Best value for growing professionals</div>
+                    <ul>
+                        <li>New Design Every Year</li>
+                        <li>3 Revisions Per Year</li>
+                        <li>Advanced Mobile Optimization</li>
+                        <li>Enhanced SEO Setup</li>
+                        <li>Contact Form + Analytics</li>
+                        <li>Technical Email Support</li>
+                        <li>Hosting on Vercel</li>
+                    </ul>
+                    <button class="card-button" onclick="openModal('Professional Package', 375)">Get This Package</button>
+                </div>
+                
+                <!-- 5 Year Package -->
+                <div class="service-card">
+                    <h3>Premium Package</h3>
+                    <div class="price">$500 <span>/ 5 years</span></div>
+                    <div class="duration">Complete career solution</div>
+                    <ul>
+                        <li>Annual Redesigns</li>
+                        <li>3 Revisions Per Year</li>
+                        <li>Premium Mobile Experience</li>
+                        <li>Comprehensive SEO Strategy</li>
+                        <li>Advanced Analytics Dashboard</li>
+                        <li>Technical Email Support</li>
+                        <li>Hosting on Vercel</li>
+                    </ul>
+                    <button class="card-button" onclick="openModal('Premium Package', 500)">Get This Package</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Templates Section -->
+    <section class="templates" id="templates">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Template Gallery</h2>
+                <p>Browse our professionally designed templates to kickstart your online presence</p>
+            </div>
+            <div class="template-grid">
+                <!-- Template 1 -->
+                    <div class="template-card">
+                        <a href="https://logiclinktemplates18.vercel.app">
+                 
+                        <div class="template-img">
+                            <img src="C:\Users\PC\Desktop\a2.PNG" alt="Academic Portfolio Template">
+                        </div>
+                        <div class="template-info">
+                            <h3>Academic Portfolio</h3>
+                            <p>Perfect for final year students to showcase projects, research, and academic achievements.</p>
+                            <a href="https://logiclinktemplates2.vercel.app" class="template-button">View Details <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        </a>
+                    </div>
+                
+                
+                <!-- Template 2 -->
+               <div class="template-card">
+                        <a href="https://logiclinktemplates2.vercel.app">
+                 
+                        <div class="template-img">
+                            <img src="C:\Users\PC\Desktop\INT\image.png" alt="Academic Portfolio Template">
+                        </div>
+                        <div class="template-info">
+                            <h3>Academic Portfolio</h3>
+                            <p>Perfect for final year students to showcase projects, research, and academic achievements.</p>
+                            <a href="https://logiclinktemplates2.vercel.app" class="template-button">View Details <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        </a>
+                    </div>
+                 
+                <!-- Template 3 -->
+                <div class="template-card">
+                        <a href="https://logiclinktemplates15.vercel.app">
+                 
+                        <div class="template-img">
+                            <img src="C:\Users\PC\Desktop\a1.PNG" alt="Academic Portfolio Template">
+                        </div>
+                        <div class="template-info">
+                            <h3>Academic Portfolio</h3>
+                            <p>Perfect for final year students to showcase projects, research, and academic achievements.</p>
+                            <a href="https://logiclinktemplates15.vercel.app" class="template-button">View Details <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Our Team</h2>
+                <p>Ready to elevate your professional online presence? Get in touch today.</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Let's Discuss Your Project</h3>
+                    <p>Whether you're a student preparing for graduation, applying for internships, or a freelancer building your brand, we have the perfect solution for you.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:contact.logiclinksolutions@gmail.com" style="color: var(--gray); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--gray)'">
+                                contact.logiclinksolutions@gmail.com
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Email Address" required>
+                        <select required>
+                            <option value="" disabled selected>Interested In...</option>
+                            <option value="starter">Starter Package</option>
+                            <option value="professional">Professional Package</option>
+                            <option value="premium">Premium Package</option>
+                            <option value="custom">Custom Solution</option>
+                        </select>
+                        <textarea placeholder="Tell us about your project..." required></textarea>
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <div class="logo">
+                        <img src="LOGICLINK.png" alt="LogicLink Solutions Logo" height="35">
+                        <div class="logo-text">Logic<span>Link</span></div>
+                    </div>
+                    <p style="color: var(--gray); margin-top: 15px; font-size: 0.9rem; line-height: 1.6;">
+                        Professional web solutions for students and freelancers to showcase their skills and accelerate their careers.
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Starter Package</a></li>
+                        <li><a href="#services">Professional Package</a></li>
+                        <li><a href="#services">Premium Package</a></li>
+                        <li><a href="#contact">Custom Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#templates">Templates</a></li>
+                        <li><a href="#">Portfolio Examples</a></li>
+                        <li><a href="#">Career Tips</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#">Our Process</a></li>
+                        <li><a href="#">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-text">&copy; 2025 LogicLink Solutions. All rights reserved. <a href="#" style="color: var(--gray);"></a>  <a href="#" style="color: var(--gray);"></a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Modal functionality
+        const modal = document.getElementById('packageModal');
+        const closeModal = document.getElementById('closeModal');
+        const modalTitle = document.getElementById('modalPackageTitle');
+        const paymentButton = document.getElementById('modalPaymentButton');
+        
+        function openModal(packageName, price) {
+            modalTitle.textContent = packageName;
+            paymentButton.textContent = `Pay $${price}`;
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModalFunc() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        closeModal.addEventListener('click', closeModalFunc);
+        
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModalFunc();
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
